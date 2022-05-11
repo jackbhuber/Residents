@@ -1,0 +1,9 @@
+name: "Data Support for Swedish Pharmacy Residents"
+output_dir: "."
+navbar:
+  title: "Data Support for Swedish Pharmacy Residents"
+  # left:
+  #   - text: "Home"
+  #     href: index.html
+  #   - text: "About"
+  #     href: about.html

@@ -111,6 +111,7 @@ legend("topright", title="Power", as.character(p),
        fill=colors)
 ```
 
+Power is a function of sample size, effect size, and statistical significance. Figure \@ref(fig:power) is a plot of power rates against these other variables. A large effect (r ~ 0.5) is detectable with a sample of any size. But only large samples have the power to detect a statistically significant (p < .05) small correlation (r = 0.1). 
 
 # Collecting your Data
 

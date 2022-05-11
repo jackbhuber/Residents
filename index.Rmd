@@ -26,7 +26,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.cap = TRUE, echo = TRUE)
 
 knitr::write_bib(c(.packages(),"knitr","VIM"),"packages.bib")
 ```
@@ -111,16 +111,21 @@ legend("topright", title="Power", as.character(p),
        fill=colors)
 ```
 
-Power is a function of sample size, effect size, and statistical significance. Figure \@ref(fig:power) is a plot of power rates against these other variables. A large effect (r ~ 0.5) is detectable with a sample of any size. But only large samples have the power to detect a statistically significant (p < .05) small correlation (r = 0.1). 
+Power is a function of sample size, effect size, and statistical significance. Figure (\#fig:power) is a plot of power rates against these other variables. A large effect (r ~ 0.5) is detectable with a sample of any size. But only large samples have the power to detect a statistically significant (p < .05) small correlation (r = 0.1). 
 
 # Collecting your Data
 
 ## Data Sources
 
-- Epic
-- Cogito dashboards
-- SlicerDicer
-- Custom reporting (SQL)
+For collecting data from Epic, it might be helpful to have a sense of the landscape of its different databases. There are three primary databases:
+
+1. **Chronicles**. This is the database that is collecting data from Hyperspace in real time. For reporting, Reporting Workbench pulls data directly from Chronicles, but it is otherwise not designed very well for historical reporting.
+
+2. **Clarity**. This is the relational database for reporting. Through a nightly process known as ETL ("extract-transform-load"), it extracts data from Chronicles and stores it in a thousand bazillion tables, and these tables are linked together by keys. To pull data from Clarity requires the use SQL language and the identification of the correct tables and fields. The SQL query selects the fields to report, from the appropriate tables (joined by common fields) with the appropriate selection criteria.
+
+![](EpicDataLandscape.png)
+
+3. **Caboodle**.
 
 ## Granularity
 

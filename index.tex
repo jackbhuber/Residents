@@ -170,7 +170,7 @@ reliably detect.
 \end{figure}
 
 Power is a function of sample size, effect size, and statistical
-significance. Figure @ref(fig:power) is a plot of power rates against
+significance. Figure (\#fig:power) is a plot of power rates against
 these other variables. A large effect (r \textasciitilde{} 0.5) is
 detectable with a sample of any size. But only large samples have the
 power to detect a statistically significant (p \textless{} .05) small
@@ -182,17 +182,37 @@ correlation (r = 0.1).
 \hypertarget{data-sources}{%
 \section{Data Sources}\label{data-sources}}
 
-\begin{itemize}
+For collecting data from Epic, it might be helpful to have a sense of
+the landscape of its different databases. There are three primary
+databases:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Chronicles}. This is the database that is collecting data from
+  Hyperspace in real time. For reporting, Reporting Workbench pulls data
+  directly from Chronicles, but it is otherwise not designed very well
+  for historical reporting.
+\item
+  \textbf{Clarity}. This is the relational database for reporting.
+  Through a nightly process known as ETL (``extract-transform-load''),
+  it extracts data from Chronicles and stores it in a thousand bazillion
+  tables, and these tables are linked together by keys. To pull data
+  from Clarity requires the use SQL language and the identification of
+  the correct tables and fields. The SQL query selects the fields to
+  report, from the appropriate tables (joined by common fields) with the
+  appropriate selection criteria.
+\end{enumerate}
+
+\includegraphics{EpicDataLandscape.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
 \tightlist
 \item
-  Epic
-\item
-  Cogito dashboards
-\item
-  SlicerDicer
-\item
-  Custom reporting (SQL)
-\end{itemize}
+  \textbf{Caboodle}.
+\end{enumerate}
 
 \hypertarget{granularity}{%
 \section{Granularity}\label{granularity}}

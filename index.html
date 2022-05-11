@@ -355,9 +355,9 @@ Power Analysis
 </p>
 </div>
 <p>Power is a function of sample size, effect size, and statistical
-significance. Figure @ref(fig:power) is a plot of power rates against
-these other variables. A large effect (r ~ 0.5) is detectable with a
-sample of any size. But only large samples have the power to detect a
+significance. Figure (#fig:power) is a plot of power rates against these
+other variables. A large effect (r ~ 0.5) is detectable with a sample of
+any size. But only large samples have the power to detect a
 statistically significant (p &lt; .05) small correlation (r = 0.1).</p>
 </div>
 </div>
@@ -365,12 +365,27 @@ statistically significant (p &lt; .05) small correlation (r = 0.1).</p>
 <h1>Collecting your Data</h1>
 <div id="data-sources" class="section level2">
 <h2>Data Sources</h2>
-<ul>
-<li>Epic</li>
-<li>Cogito dashboards</li>
-<li>SlicerDicer</li>
-<li>Custom reporting (SQL)</li>
-</ul>
+<p>For collecting data from Epic, it might be helpful to have a sense of
+the landscape of its different databases. There are three primary
+databases:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Chronicles</strong>. This is the database that is
+collecting data from Hyperspace in real time. For reporting, Reporting
+Workbench pulls data directly from Chronicles, but it is otherwise not
+designed very well for historical reporting.</p></li>
+<li><p><strong>Clarity</strong>. This is the relational database for
+reporting. Through a nightly process known as ETL
+(“extract-transform-load”), it extracts data from Chronicles and stores
+it in a thousand bazillion tables, and these tables are linked together
+by keys. To pull data from Clarity requires the use SQL language and the
+identification of the correct tables and fields. The SQL query selects
+the fields to report, from the appropriate tables (joined by common
+fields) with the appropriate selection criteria.</p></li>
+</ol>
+<p><img src="EpicDataLandscape.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Caboodle</strong>.</li>
+</ol>
 </div>
 <div id="granularity" class="section level2">
 <h2>Granularity</h2>

@@ -39,10 +39,11 @@ The purpose of this document is to assemble some advice and resources to support
 ## The causal logic of your project
 Fundamentally, the resident research project is an effort to gather causal evidence for the claim that a particular treatment or way of utilizing medicine "worked" by being more effective than a rival or pre-existing treatment. To plan data collection for the strongest causal evidence is the purpose of research design [@CampbellStanley1963].
 
-The ideal research design would be a pure experiment with random assignment. However, because the resident research project does not randomly assign patients to conditions going forward, it therefore falls under the category of _**quasi-experiment**_ which means it is more vulnerable to threats to validity.
+The ideal research design would be a pure experiment with random assignment. The resident would randomly assign patients to treatment and control conditions, then compare outcomes following treatment. In such a scenario the resident could attribute any significant difference in outcomes to the treatment because the groups would differ only by chance in all other ways. Any pre-existing differences would be statistically insignificant.
 
-The resident research project will culminate in a comparison between two groups: a pre-implementation group and a post-implementation group.
+Because the resident cannot randomly assign patients to conditions going forward, the project falls under the category of _**quasi-experiment**_. This means it is more vulnerable to confounding explanations of any difference in outcomes.
 
+The resident research project will culminate in a comparison between two groups: a pre-implementation group and a post-implementation group. One difference between the groups is time, and recent history has made a big difference. Compare a pre-implementation group from the onset of the pandemic with a high incidence of COVID-19 to a more recent post-implementation group with much lower incidence of the virus. This difference between the two groups in COVID-19 infection may combine with the difference in drug dosing to influence treatment outcomes. This difference in COVID-19 infection could therefore be a _confound_. 
 
 ## How many patients?
 

@@ -117,76 +117,6 @@ pre code {
 </style>
 
 
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
 
 <!-- tabsets -->
 
@@ -332,27 +262,6 @@ div.tocify {
 
 
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Data Support for Swedish Pharmacy Residents</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
 <div id="header">
 
 
@@ -377,18 +286,33 @@ proposal to a completed research project.</p>
 <h2>The causal logic of your project</h2>
 <p>Fundamentally, the resident research project is an effort to gather
 causal evidence for the claim that a particular treatment or way of
-utilizing medicine “worked” by being more effective than a rival. To
-plan data collection for the strongest causal evidence is the purpose of
-research design <span class="citation">(<a
+utilizing medicine “worked” by being more effective than a rival or
+pre-existing treatment. To plan data collection for the strongest causal
+evidence is the purpose of research design <span class="citation">(<a
 href="#ref-CampbellStanley1963" role="doc-biblioref">Campbell and
-Stanley 1963</a>)</span>. The ideal research design would be a pure
-experiment with random assignment. Because the resident research does
-not randomly assign patients to conditions, it falls under the category
-of <em><strong>quasi-experiment</strong></em> which means it is more
-vulnerable to threats to validity.</p>
+Stanley 1963</a>)</span>.</p>
+<p>The ideal research design would be a pure experiment with random
+assignment. The resident would randomly assign patients to treatment and
+control conditions, then compare outcomes following treatment. In such a
+scenario the resident could attribute any significant difference in
+outcomes to the treatment because the groups would differ only by chance
+in all other ways. Any pre-existing differences would be statistically
+insignificant.</p>
+<p>Because the resident cannot randomly assign patients to conditions
+going forward, the project falls under the category of
+<em><strong>quasi-experiment</strong></em>. This means it is more
+vulnerable to confounding explanations of any difference in
+outcomes.</p>
 <p>The resident research project will culminate in a comparison between
-two groups: a pre-implementation group and a post-implementation
-group.</p>
+two groups: a pre-implementation group and a post-implementation group.
+One difference between the groups is time, and recent history has made a
+big difference. Compare a pre-implementation group from the onset of the
+pandemic with a high incidence of COVID-19 to a more recent
+post-implementation group with much lower incidence of the virus. This
+difference between the two groups in COVID-19 infection may combine with
+the difference in drug dosing to influence treatment outcomes. This
+difference in COVID-19 infection could therefore be a
+<em>confound</em>.</p>
 </div>
 <div id="how-many-patients" class="section level2">
 <h2>How many patients?</h2>

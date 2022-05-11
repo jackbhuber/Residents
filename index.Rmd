@@ -37,7 +37,9 @@ The purpose of this document is to assemble some advice and resources to support
 # Planning your Project
 
 ## The causal logic of your project
-Fundamentally, the resident research project is an effort to gather causal evidence for the claim that a particular treatment or way of utilizing medicine "worked" by being more effective than a rival. To plan data collection for the strongest causal evidence is the purpose of research design [@CampbellStanley1963]. The ideal research design would be a pure experiment with random assignment. Because the resident research does not randomly assign patients to conditions, it falls under the category of _**quasi-experiment**_ which means it is more vulnerable to threats to validity.
+Fundamentally, the resident research project is an effort to gather causal evidence for the claim that a particular treatment or way of utilizing medicine "worked" by being more effective than a rival or pre-existing treatment. To plan data collection for the strongest causal evidence is the purpose of research design [@CampbellStanley1963].
+
+The ideal research design would be a pure experiment with random assignment. However, because the resident research project does not randomly assign patients to conditions going forward, it therefore falls under the category of _**quasi-experiment**_ which means it is more vulnerable to threats to validity.
 
 The resident research project will culminate in a comparison between two groups: a pre-implementation group and a post-implementation group.
 

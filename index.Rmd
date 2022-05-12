@@ -1,6 +1,8 @@
 ---
-title: "Data Support for Swedish Pharmacy Residents"
-author: "Jack B. Huber, Ph.D."
+title: "Data Support for the Swedish Pharmacy Resident Research Project"
+author: 
+  - Jack B. Huber, Ph.D.
+  - Clinical Data Coordinator
 date: "`r format(Sys.Date(), '%B %Y')`"
 documentclass: report
 bibliography: [bibfile.bib,packages.bib]
@@ -31,8 +33,12 @@ knitr::opts_chunk$set(fig.cap = TRUE, echo = TRUE)
 knitr::write_bib(c(.packages(),"knitr","VIM"),"packages.bib")
 ```
 
+---
+
 # Purpose of this Document
 The purpose of this document is to assemble some advice and resources to support Swedish Pharmacy residents in their journey from project proposal to a completed research project.
+
+---
 
 # Planning your Project
 
@@ -53,7 +59,11 @@ The point is to clarify:
 
 ## How many patients?
 
-Possibly the most pressing question for resident research projects is: How many patients do I need? The resident research project will culiminate in a series of comparisons between the pre-implementation and post-implementation groups. Outcomes of the two samples will differ by at least some quantity. The resident researcher expresses this difference as an effect, like this:
+Possibly the most pressing question for resident research projects is: **How many patients do I need?** 
+
+The resident research project will culiminate in a series of comparisons between the pre-implementation and post-implementation groups. Outcomes of the two samples will differ by at least some quantity. The resident researcher expresses this difference as an effect, like this:
+
+[insert table about here]
 
 Assume that this effect suggests more favorable outcomes for the post-implementation group. This effect raises several questions:
 
@@ -63,7 +73,7 @@ Assume that this effect suggests more favorable outcomes for the post-implementa
 
 In statistical terms, this is a question of **statistical power**. Power is the ability to isolate a treatment effect when it really does exist [@Cohen1988]. Power is a function of effect size, sample size, and statistical significance. In order to decide on a number of patients we need to have a sense of what size of effect we want to reliably detect.
 
-```{r power, echo=FALSE, fig.cap='Power Analysis'}
+```{r power, echo=FALSE, fig.cap='Plot of Power Curves'}
 # Plot sample size curves for detecting correlations of
 # various sizes.
 

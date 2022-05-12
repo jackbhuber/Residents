@@ -10,9 +10,10 @@
 
 
 <meta name="author" content="Jack B. Huber, Ph.D." />
+<meta name="author" content="Clinical Data Coordinator" />
 
 
-<title>Data Support for Swedish Pharmacy Residents</title>
+<title>Data Support for the Swedish Pharmacy Resident Research Project</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -117,6 +118,76 @@ pre code {
 </style>
 
 
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
 
 <!-- tabsets -->
 
@@ -262,23 +333,47 @@ div.tocify {
 
 
 
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Support for Swedish Pharmacy Residents</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
 <div id="header">
 
 
 
-<h1 class="title toc-ignore">Data Support for Swedish Pharmacy
-Residents</h1>
+<h1 class="title toc-ignore">Data Support for the Swedish Pharmacy
+Resident Research Project</h1>
 <h4 class="author">Jack B. Huber, Ph.D.</h4>
+<h4 class="author">Clinical Data Coordinator</h4>
 <h4 class="date">May 2022</h4>
 
 </div>
 
 
+<hr />
 <div id="purpose-of-this-document" class="section level1">
 <h1>Purpose of this Document</h1>
 <p>The purpose of this document is to assemble some advice and resources
 to support Swedish Pharmacy residents in their journey from project
 proposal to a completed research project.</p>
+<hr />
 </div>
 <div id="planning-your-project" class="section level1">
 <h1>Planning your Project</h1>
@@ -328,11 +423,13 @@ confound.</li>
 <div id="how-many-patients" class="section level2">
 <h2>How many patients?</h2>
 <p>Possibly the most pressing question for resident research projects
-is: How many patients do I need? The resident research project will
-culiminate in a series of comparisons between the pre-implementation and
-post-implementation groups. Outcomes of the two samples will differ by
-at least some quantity. The resident researcher expresses this
-difference as an effect, like this:</p>
+is: <strong>How many patients do I need?</strong></p>
+<p>The resident research project will culiminate in a series of
+comparisons between the pre-implementation and post-implementation
+groups. Outcomes of the two samples will differ by at least some
+quantity. The resident researcher expresses this difference as an
+effect, like this:</p>
+<p>[insert table about here]</p>
 <p>Assume that this effect suggests more favorable outcomes for the
 post-implementation group. This effect raises several questions:</p>
 <ul>
@@ -349,9 +446,9 @@ effect size, sample size, and statistical significance. In order to
 decide on a number of patients we need to have a sense of what size of
 effect we want to reliably detect.</p>
 <div class="figure">
-<img src="index_files/figure-html/power-1.png" alt="Power Analysis" width="672" />
+<img src="index_files/figure-html/power-1.png" alt="Plot of Power Curves" width="672" />
 <p class="caption">
-Power Analysis
+Plot of Power Curves
 </p>
 </div>
 <p>This a plot of power rates against these other variables. A large
@@ -467,23 +564,12 @@ two proportions.</li>
 <li>“Time to…” a therapeutic level? In such a case you would be
 comparing two different quantities of time.</li>
 </ul>
-<div id="odds-ratios" class="section level3">
-<h3>Odds ratios</h3>
-</div>
-<div id="chi-square-test-of-independence" class="section level3">
-<h3>Chi-square test of independence</h3>
-</div>
-<div id="two-sample-t-test" class="section level3">
-<h3>Two-sample t-test</h3>
-</div>
-<div id="z-test-of-the-difference-of-proportions"
-class="section level3">
-<h3>Z test of the difference of proportions</h3>
-</div>
-<div id="cohens-d-effect-size" class="section level3">
-<h3>Cohen’s <em>d</em> effect size</h3>
+<p><strong>Odds ratios / Logistic regression</strong>.</p>
+<p><strong>Chi-square test of independence</strong>.</p>
+<p><strong>Two-sample t-test</strong>.</p>
+<p><strong>Z test of the difference of proportions</strong>.</p>
+<p><strong>Cohen’s <em>d</em> effect size</strong>.</p>
 <hr />
-</div>
 </div>
 </div>
 <div id="reporting-your-results" class="section level1">

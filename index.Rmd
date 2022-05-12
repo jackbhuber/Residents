@@ -111,7 +111,9 @@ legend("topright", title="Power", as.character(p),
        fill=colors)
 ```
 
-Power is a function of sample size, effect size, and statistical significance. Figure (\#fig:power) is a plot of power rates against these other variables. A large effect (r ~ 0.5) is detectable with a sample of any size. But only large samples have the power to detect a statistically significant (p < .05) small correlation (r = 0.1). 
+This a plot of power rates against these other variables. A large effect (r ~ 0.5) is detectable with a sample of any size. But only large samples have the power to detect a statistically significant (p < .05) small correlation (r = 0.1). 
+
+---
 
 # Collecting your Data
 
@@ -119,30 +121,40 @@ Power is a function of sample size, effect size, and statistical significance. F
 
 For collecting data from Epic, it might be helpful to have a sense of the landscape of its different databases. There are three primary databases:
 
-1. **Chronicles**. This is the database that is collecting data from Hyperspace in real time. For reporting, Reporting Workbench pulls data directly from Chronicles, but it is otherwise not designed very well for historical reporting.
-
-2. **Clarity**. This is the relational database for reporting. Through a nightly process known as ETL ("extract-transform-load"), it extracts data from Chronicles and stores it in a thousand bazillion tables, and these tables are linked together by keys. To pull data from Clarity requires the use SQL language and the identification of the correct tables and fields. The SQL query selects the fields to report, from the appropriate tables (joined by common fields) with the appropriate selection criteria.
-
 ![](EpicDataLandscape.png)
 
-3. **Caboodle**.
+**Chronicles**. This is the database that is collecting data from Hyperspace in real time. For reporting, Reporting Workbench pulls data directly from Chronicles, but it is otherwise not designed very well for historical reporting.
 
-## Granularity
+**Clarity**. This is the primary relational database for reporting Epic data. Through a nightly process known as ETL ("extract-transform-load"), Clarity extracts data from Chronicles and stores it in a thousand bazillion tables (think "spreadsheets"). To pull data for a report from Clarity is to identify the correct tables and fields and to write a SQL query to join the tables, apply the appropriate selection criteria, and report the appropriate fields.
 
-- Patient-level data
-- Encounter level data
-- Medication administration level data
-- Lab results level data
+**Caboodle**. This a relatively new relational database that functions essentially the same as Clarity but is designed to be much easier to use. Caboodle uses fewer tables derived from myriad Clarity tables which vastly simplifies the work and complexity of writing a SQL query. The down side is not all Clarity data are in Caboodle.
 
-## Advice for Data Collection
+## Granularity of data
 
-1. Define the most critical variables.
+Granularity means two related things. One is the size of the data point which is to say what context it provides for other, smaller, data points. The other is, essentially this question: What does a row in the spreadsheet mean? There are several different levels of granularity:
 
-2. Study an exemplar (provided).
+**Patient-level data**. A patient has a unique ID number: the MRN. No two patients have the same MRN. When it comes to mining Epic data for the research project, the patient list is perhaps the most important: the resident needs a "patient list". When it comes to data mining, the patient "level" is context to more granular data in the sense that a patient can have multiple encounters - and thus multiple Encounter CSNs "within" the same Patient MRN.
 
-3. We need to figure out version control. Data proliferation and overload. 
+**Encounter-level data**. The unique Epic ID number for the encounter is the CSN. The encounter is context to more granular data such as a treatment regimen of a particular medicine. Multiple drug administrations can occur "within" an encounter CSN.
+
+**Medication administration level data**. This is possibly the lowest level and the most granular data. In Caboodle, each administration of a medicine has a unique ID number and is time-stamped. My queries to date have been for counts of medicine administrations, or firsts, lasts, minimums and maximum doses within a hospital encounter or ICU stay.
+
+**Lab results level data**. Lab data is similar to medicine administration data because, again in Caboodle, each lab result is has its own unique ID number and is time-stamped. There can be a great many lab results within a hospital encounter. My queries to date have been for counts of lab results, or firsts, lasts, minimums and maximum values within a hospital encounter or ICU stay.
+
+The resident data collection form is designed for patient level data; each row in the spreadsheet captures the experience of a hospital encounter. It can also be helpful to report the medicine administration and lab result data sorted chronologically by patient and encounter.
+
+## Advice for Data Collection and Management
+
+**Be proactive**. As you begin to decide what data to collect, submit your project plan and requests for data in writing to me (Jack) as soon as possible. This is so I can have a bit of time to understand your project, do some discovery in Caboodle or Clarity, and note any questions. Then meet with me via Teams to get on the same page.
+
+**Devise a system for organizing your data**. By this I mean version control. This data collection process is iterative. You will ask for data and I'll write a SQL query that produces an Excel workbook of data. That's one iteration. In all likelihood you'll need a revision or two. Upon receiving your feedback I'll edit my query and produce for you a new set of data to replace the first set. That's the second iteration. The more iterations, the more data, the more potential for multiple versions and data overload. And I may not be able to do more than a few iterations. I can work on some best practices to help us through this. Stay tuned.
+
+**There is no substitute for chart review**. Some fraction of resident research data can come from Epic data mining, but it still needs to be validated with careful chart review. And some data which are very difficult to mine or to query into the correct format may have to come from chart review.
+
+---
 
 # Analyzing your Data
+
 You have data. Congratulations! Let's analyze!
 
 
@@ -165,11 +177,15 @@ It is important to know the measurement level of your variables. How do you expr
 
 ### Cohen's _d_ effect size
 
+---
+
 # Reporting your Results
 
 ## Advice on graphs
 
 ## Advice on tables
+
+---
 
 `r if (knitr::is_html_output()) '
 # References {-}

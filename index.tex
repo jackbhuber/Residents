@@ -169,12 +169,12 @@ reliably detect.
 \caption{Power Analysis}
 \end{figure}
 
-Power is a function of sample size, effect size, and statistical
-significance. Figure (\#fig:power) is a plot of power rates against
-these other variables. A large effect (r \textasciitilde{} 0.5) is
-detectable with a sample of any size. But only large samples have the
-power to detect a statistically significant (p \textless{} .05) small
-correlation (r = 0.1).
+This a plot of power rates against these other variables. A large effect
+(r \textasciitilde{} 0.5) is detectable with a sample of any size. But
+only large samples have the power to detect a statistically significant
+(p \textless{} .05) small correlation (r = 0.1).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{collecting-your-data}{%
 \chapter{Collecting your Data}\label{collecting-your-data}}
@@ -186,62 +186,95 @@ For collecting data from Epic, it might be helpful to have a sense of
 the landscape of its different databases. There are three primary
 databases:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Chronicles}. This is the database that is collecting data from
-  Hyperspace in real time. For reporting, Reporting Workbench pulls data
-  directly from Chronicles, but it is otherwise not designed very well
-  for historical reporting.
-\item
-  \textbf{Clarity}. This is the relational database for reporting.
-  Through a nightly process known as ETL (``extract-transform-load''),
-  it extracts data from Chronicles and stores it in a thousand bazillion
-  tables, and these tables are linked together by keys. To pull data
-  from Clarity requires the use SQL language and the identification of
-  the correct tables and fields. The SQL query selects the fields to
-  report, from the appropriate tables (joined by common fields) with the
-  appropriate selection criteria.
-\end{enumerate}
-
 \includegraphics{EpicDataLandscape.png}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \textbf{Caboodle}.
-\end{enumerate}
+\textbf{Chronicles}. This is the database that is collecting data from
+Hyperspace in real time. For reporting, Reporting Workbench pulls data
+directly from Chronicles, but it is otherwise not designed very well for
+historical reporting.
 
-\hypertarget{granularity}{%
-\section{Granularity}\label{granularity}}
+\textbf{Clarity}. This is the primary relational database for reporting
+Epic data. Through a nightly process known as ETL
+(``extract-transform-load''), Clarity extracts data from Chronicles and
+stores it in a thousand bazillion tables (think ``spreadsheets''). To
+pull data for a report from Clarity is to identify the correct tables
+and fields and to write a SQL query to join the tables, apply the
+appropriate selection criteria, and report the appropriate fields.
 
-\begin{itemize}
-\tightlist
-\item
-  Patient-level data
-\item
-  Encounter level data
-\item
-  Medication administration level data
-\item
-  Lab results level data
-\end{itemize}
+\textbf{Caboodle}. This a relatively new relational database that
+functions essentially the same as Clarity but is designed to be much
+easier to use. Caboodle uses fewer tables derived from myriad Clarity
+tables which vastly simplifies the work and complexity of writing a SQL
+query. The down side is not all Clarity data are in Caboodle.
 
-\hypertarget{advice-for-data-collection}{%
-\section{Advice for Data Collection}\label{advice-for-data-collection}}
+\hypertarget{granularity-of-data}{%
+\section{Granularity of data}\label{granularity-of-data}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Define the most critical variables.
-\item
-  Study an exemplar (provided).
-\item
-  We need to figure out version control. Data proliferation and
-  overload.
-\end{enumerate}
+Granularity means two related things. One is the size of the data point
+which is to say what context it provides for other, smaller, data
+points. The other is, essentially this question: What does a row in the
+spreadsheet mean? There are several different levels of granularity:
+
+\textbf{Patient-level data}. A patient has a unique ID number: the MRN.
+No two patients have the same MRN. When it comes to mining Epic data for
+the research project, the patient list is perhaps the most important:
+the resident needs a ``patient list''. When it comes to data mining, the
+patient ``level'' is context to more granular data in the sense that a
+patient can have multiple encounters - and thus multiple Encounter CSNs
+``within'' the same Patient MRN.
+
+\textbf{Encounter-level data}. The unique Epic ID number for the
+encounter is the CSN. The encounter is context to more granular data
+such as a treatment regimen of a particular medicine. Multiple drug
+administrations can occur ``within'' an encounter CSN.
+
+\textbf{Medication administration level data}. This is possibly the
+lowest level and the most granular data. In Caboodle, each
+administration of a medicine has a unique ID number and is time-stamped.
+My queries to date have been for counts of medicine administrations, or
+firsts, lasts, minimums and maximum doses within a hospital encounter or
+ICU stay.
+
+\textbf{Lab results level data}. Lab data is similar to medicine
+administration data because, again in Caboodle, each lab result is has
+its own unique ID number and is time-stamped. There can be a great many
+lab results within a hospital encounter. My queries to date have been
+for counts of lab results, or firsts, lasts, minimums and maximum values
+within a hospital encounter or ICU stay.
+
+The resident data collection form is designed for patient level data;
+each row in the spreadsheet captures the experience of a hospital
+encounter. It can also be helpful to report the medicine administration
+and lab result data sorted chronologically by patient and encounter.
+
+\hypertarget{advice-for-data-collection-and-management}{%
+\section{Advice for Data Collection and
+Management}\label{advice-for-data-collection-and-management}}
+
+\textbf{Be proactive}. As you begin to decide what data to collect,
+submit your project plan and requests for data in writing to me (Jack)
+as soon as possible. This is so I can have a bit of time to understand
+your project, do some discovery in Caboodle or Clarity, and note any
+questions. Then meet with me via Teams to get on the same page.
+
+\textbf{Devise a system for organizing your data}. By this I mean
+version control. This data collection process is iterative. You will ask
+for data and I'll write a SQL query that produces an Excel workbook of
+data. That's one iteration. In all likelihood you'll need a revision or
+two. Upon receiving your feedback I'll edit my query and produce for you
+a new set of data to replace the first set. That's the second iteration.
+The more iterations, the more data, the more potential for multiple
+versions and data overload. And I may not be able to do more than a few
+iterations. I can work on some best practices to help us through this.
+Stay tuned.
+
+\textbf{There is no substitute for chart review}. Some fraction of
+resident research data can come from Epic data mining, but it still
+needs to be validated with careful chart review. And some data which are
+very difficult to mine or to query into the correct format may have to
+come from chart review.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{analyzing-your-data}{%
 \chapter{Analyzing your Data}\label{analyzing-your-data}}
@@ -291,6 +324,8 @@ proportions}\label{z-test-of-the-difference-of-proportions}}
 \subsection{\texorpdfstring{Cohen's \emph{d} effect
 size}{Cohen's d effect size}}\label{cohens-d-effect-size}}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{reporting-your-results}{%
 \chapter{Reporting your Results}\label{reporting-your-results}}
 
@@ -299,6 +334,8 @@ size}{Cohen's d effect size}}\label{cohens-d-effect-size}}
 
 \hypertarget{advice-on-tables}{%
 \section{Advice on tables}\label{advice-on-tables}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
   \bibliography{bibfile.bib,packages.bib}
 

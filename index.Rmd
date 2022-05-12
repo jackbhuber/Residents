@@ -167,15 +167,15 @@ It is important to know the measurement level of your variables. How do you expr
 - Mortality rate (% surviving)? In such a case you would be comparing two proportions.
 - "Time to..." a therapeutic level? In such a case you would be comparing two different quantities of time.
 
-### Odds ratios
+**Odds ratios / Logistic regression**.
 
-### Chi-square test of independence
+**Chi-square test of independence**.
 
-### Two-sample t-test
+**Two-sample t-test**.
 
-### Z test of the difference of proportions
+**Z test of the difference of proportions**.
 
-### Cohen's _d_ effect size
+**Cohen's _d_ effect size**.
 
 ---
 

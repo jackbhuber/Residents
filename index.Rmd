@@ -36,24 +36,28 @@ knitr::write_bib(c(.packages(),"knitr","VIM"),"packages.bib")
 ---
 
 # Purpose of this Document
-The purpose of this document is to assemble some advice and resources to support Swedish Pharmacy residents in their journey from project proposal to a completed research project.
+The purpose of this document is to assemble some advice and resources to support Swedish Pharmacy residents in their journey from project proposal to a completed research project for presentation and publication.
 
 ---
 
-# Planning your Project
+# Planning the Project
 
-## The causal logic of your project
-Fundamentally, the resident research project is an effort to gather causal evidence for the claim that a particular treatment or way of utilizing medicine "worked" by being more effective than a rival or pre-existing treatment. To plan data collection for the strongest causal evidence is the purpose of research design [@CampbellStanley1963].
+## The causal logic of the project
+The resident researcher should begin the project with a basic sense of the design logic of the project. The point of this section is to introduce or reinforce a few basic concepts of research design as they apply to the resident research project.
 
-The ideal research design would be a pure experiment with random assignment. The resident would randomly assign patients to treatment and control conditions, then compare outcomes following treatment. In such a scenario the resident could attribute any significant difference in outcomes to the treatment because the groups would differ only by chance in all other ways. Any pre-existing differences would be statistically insignificant.
+The project aspires to make a case for a proposed improved medical treatment. This case rests on causal evidence that the proposed treatment is more clinically effective than the current mode of treatment. The most convincing case would demonstrate that the treatment alone caused the improvement and cast doubt that the improvement would have happened anyway. To thoughtfully plan data collection for the strongest causal evidence, and to anticipate and minimize challenges of rival explanations, is the purpose of research **design** [@CampbellStanley1963]. 
 
-Because the resident cannot randomly assign patients to conditions going forward, the project falls under the category of _**quasi-experiment**_. This means it is more vulnerable to confounding explanations of any difference in outcomes.
+The ideal design would be based on random assignment of patients to conditions, as in a randomly controlled trial. The resident researcher would randomly assign patients to a control condition and various treatment conditions, then compare outcomes of all these groups following treatment, and the outcomes will differ at least slightly. Assume patients in the treatment conditions had better outcomes than patients in the control condition. The resident could attribute this difference to the treatment alone because in all other ways the groups would differ only by chance _by design_.
 
-The resident research project will culminate in a comparison between two groups: a pre-implementation group and a post-implementation group. One difference between the groups is time, and recent history has made a big difference. Compare a pre-implementation group from the onset of the pandemic with a high incidence of COVID-19 to a more recent post-implementation group with much lower incidence of the virus. This difference between the two groups in COVID-19 infection may combine with the difference in drug dosing to influence treatment outcomes. This difference in COVID-19 infection could therefore be a _**confound**_.
+Random assignment is probably not an option for resident research project. Until that happens, the project falls under the category of **quasi-experiment** which means it is more vulnerable to **confounding explanations** of any differences in outcomes.
 
-The point is to clarify:
+The resident research project based on retrospective chart review will culminate in a comparison between two groups: a pre-implementation group and a post-implementation group. Assume a set of data that show better outcomes for the post-implementation group. Great! Can we attribute that to implementation of an improved treatment or protocol, or for some other reason would the post-implementation group have fared better anyway?
 
-- What is the outcome to improve? This is the dependent variable.
+One potentially confounding pre-existing difference between the two groups is _time_, or history. A recent resident project provides a good example. In this project, the time frame for the pre-implementation group was early 2020 and thus this group had a higher incidence of COVID-19 infection than the more recent post-implementation group. Were outcomes for the pre-implementation group less favorable because more of them were infected with COVID-19? The proposed dosing protocol may very well have improved outcomes for the post-implementation group. The problem is there are competing explanations of the results. Pre-existing differences between the two groups in COVID-19 infection amounted to a _confounding_ variable due to history.
+
+The point here is not to teach a course in research design but to help the resident researcher clarify for this project:
+
+- What are the primary outcomes to improve? Length of stay? Time-to-therapeutic level? These are _dependent_ variables. They depend on, or are the effects of, other variables.
 - What is the difference in treatment intended to cause the improvement in the post-implementation group? This is the independent variable.
 - All other variables are control variables. They should differ only by chance. If there is a noticeable pre-existing difference, and the level of that factor in one group affects the outcome, it is a confound.
 
@@ -73,7 +77,7 @@ Assume that this effect suggests more favorable outcomes for the post-implementa
 
 In statistical terms, this is a question of **statistical power**. Power is the ability to isolate a treatment effect when it really does exist [@Cohen1988]. Power is a function of effect size, sample size, and statistical significance. In order to decide on a number of patients we need to have a sense of what size of effect we want to reliably detect.
 
-```{r power, echo=FALSE, fig.cap='Plot of Power Curves'}
+```{r power, echo=FALSE, fig.cap=''}
 # Plot sample size curves for detecting correlations of
 # various sizes.
 
@@ -177,9 +181,9 @@ It is important to know the measurement level of your variables. How do you expr
 - Mortality rate (% surviving)? In such a case you would be comparing two proportions.
 - "Time to..." a therapeutic level? In such a case you would be comparing two different quantities of time.
 
-**Odds ratios / Logistic regression**.
+**Odds ratios / Logistic regression**. Some outcomes are binary. Yes or no. Something happened or it didn't. Treatment worked or it did not. For projects with binary outcomes, the researcher will want to consider comparing odds ratios. Logistic regression would be the appropriate technique for modeling differences between the pre- and post-implementation groups in whether patients landed in one category or the other.
 
-**Chi-square test of independence**.
+**Chi-square test of independence**. Some outcomes are categorical. There is no "more" or "less" but rather different categories of outcomes. For projects with categorical outcomes, the researcher will want to consider using chi-square tests of independence.
 
 **Two-sample t-test**.
 
